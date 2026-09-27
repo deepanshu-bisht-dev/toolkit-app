@@ -27,23 +27,6 @@ with no file ever leaving your machine.
 Built with **FastAPI** instead of Flask — async-ready, automatic interactive
 API docs at `/docs`, and request validation baked in via Pydantic.
 
----
-
-## 🖼️ Screenshots
-
-> _Add your own screenshots here after running the app._
-
-<div align="center">
-
-<!-- ![Homepage](docs/screenshot-home.png) -->
-<!-- ![QR Generator](docs/screenshot-qr.png) -->
-
-**📸 Homepage — _add screenshot here_**
-
-</div>
-
----
-
 ## ✨ Tools Included
 
 | Tool | What it does |
