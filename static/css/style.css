@@ -1,0 +1,399 @@
+/* ===== Design Tokens =====
+   A bright, friendly SaaS-utility theme - distinct from the dark
+   scanner, warm paper, and newsroom themes used in earlier projects.
+   This one is meant to feel like a tool people actually want to use.
+
+   bg-base:   #F8F9FC
+   bg-panel:  #FFFFFF
+   ink:       #17171F
+   accent:    #6366F1  (indigo)
+   accent-2:  #EC4899  (pink, sparingly, for highlights)
+   text-muted:#6B7280
+   border:    #E5E7EB
+   Display:   'Sora'
+   Body:      'Inter'
+   Mono:      'JetBrains Mono'
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-base: #F8F9FC;
+    --bg-panel: #FFFFFF;
+    --ink: #17171F;
+    --accent: #6366F1;
+    --accent-soft: #EEF0FE;
+    --accent-2: #EC4899;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+    --success: #16A34A;
+    --danger: #DC2626;
+}
+
+body {
+    background: var(--bg-base);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+}
+
+a {
+    color: inherit;
+}
+
+/* ===== Topbar ===== */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--ink);
+}
+
+.topnav a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.topnav a:hover {
+    color: var(--accent);
+}
+
+/* ===== Page wrapper ===== */
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+}
+
+/* ===== Hero (homepage) ===== */
+.hero {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 48px;
+}
+
+.eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+}
+
+.hero h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 16px;
+}
+
+.highlight {
+    color: var(--accent);
+}
+
+.subtext {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* ===== Tool grid (homepage) ===== */
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.tool-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(99, 102, 241, 0.12);
+    border-color: var(--accent);
+}
+
+.tool-icon {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.tool-card h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.tool-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ===== Individual tool pages ===== */
+.tool-page {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.back-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+.tool-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.tool-desc {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 32px;
+    max-width: 560px;
+}
+
+.tool-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.tool-form {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tool-form label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-top: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.tool-form label:first-child {
+    margin-top: 0;
+}
+
+.tool-form input[type="text"],
+.tool-form input[type="number"],
+.tool-form input[type="file"],
+.tool-form textarea,
+.tool-form select {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--bg-base);
+}
+
+.tool-form textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.tool-form input[type="range"] {
+    accent-color: var(--accent);
+}
+
+.tool-form input[type="color"] {
+    width: 100%;
+    height: 38px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.tool-form input:focus,
+.tool-form textarea:focus,
+.tool-form select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+    margin-top: 22px;
+    padding: 12px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    display: inline-block;
+    text-align: center;
+    margin-top: 16px;
+    padding: 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.status-line {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    min-height: 14px;
+}
+
+.status-line.error {
+    color: var(--danger);
+}
+
+/* ===== Result panel ===== */
+.result-panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 260px;
+}
+
+.result-empty {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.result-image {
+    max-width: 100%;
+    max-height: 320px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+/* ===== QR scan results ===== */
+.scan-results {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.scan-result-item {
+    background: var(--accent-soft);
+    border-radius: 8px;
+    padding: 12px 14px;
+    text-align: left;
+    word-break: break-word;
+}
+
+.scan-result-label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.scan-result-item a {
+    color: var(--accent);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.no-data-text {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+/* ===== Footer ===== */
+.footer {
+    text-align: center;
+    padding: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 760px) {
+    .tool-grid { grid-template-columns: 1fr; }
+    .tool-layout { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 28px; }
+    .topbar { padding: 16px 20px; }
+    .field-row { grid-template-columns: 1fr; }
+}

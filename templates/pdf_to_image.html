@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}PDF to Image — ToolBox{% endblock %}
+
+{% block content %}
+<div class="tool-page">
+    <a href="/" class="back-link">← All Tools</a>
+    <h1 class="tool-title">📄 PDF → Image</h1>
+    <p class="tool-desc">Converts every page of your PDF into a PNG image, delivered as a ZIP file.</p>
+
+    <div class="tool-layout">
+        <form id="pdf-to-image-form" class="tool-form">
+            <label>PDF File</label>
+            <input type="file" name="file" accept="application/pdf" required>
+
+            <button type="submit" class="btn-primary">Convert to Images</button>
+            <p class="status-line" id="status-line"></p>
+        </form>
+
+        <div class="result-panel">
+            <div class="result-empty" id="result-empty">Your ZIP of images will download automatically when ready.</div>
+            <a id="download-link" class="btn-secondary" style="display:none;" download="pdf_pages.zip">Download ZIP</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+initFileResultForm({
+    formId: "pdf-to-image-form",
+    endpoint: "/api/pdf/to-images",
+    downloadName: "pdf_pages.zip",
+});
+</script>
+{% endblock %}

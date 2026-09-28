@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}ToolBox — Multipurpose File Utilities{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">// Free Online Utilities</p>
+    <h1>All your everyday file tools, <span class="highlight">in one place.</span></h1>
+    <p class="subtext">
+        Generate and scan QR codes, compress and convert images, add watermarks,
+        and convert or merge PDFs — no signup, no watermark on your files, runs
+        entirely on this server.
+    </p>
+</section>
+
+<section class="tool-grid">
+    <a href="/qr-generator" class="tool-card">
+        <span class="tool-icon">🔗</span>
+        <h3>QR Generator</h3>
+        <p>Create custom QR codes with your own colors and logo.</p>
+    </a>
+    <a href="/qr-scanner" class="tool-card">
+        <span class="tool-icon">📷</span>
+        <h3>QR Scanner</h3>
+        <p>Upload an image and decode any QR code inside it.</p>
+    </a>
+    <a href="/image-compress" class="tool-card">
+        <span class="tool-icon">🗜️</span>
+        <h3>Image Compressor</h3>
+        <p>Reduce image file size and resize dimensions.</p>
+    </a>
+    <a href="/image-convert" class="tool-card">
+        <span class="tool-icon">🔄</span>
+        <h3>Image Converter</h3>
+        <p>Convert between PNG, JPG, WEBP, and BMP formats.</p>
+    </a>
+    <a href="/pdf-to-image" class="tool-card">
+        <span class="tool-icon">📄</span>
+        <h3>PDF → Image</h3>
+        <p>Turn every page of a PDF into a downloadable PNG.</p>
+    </a>
+    <a href="/image-to-pdf" class="tool-card">
+        <span class="tool-icon">🖼️</span>
+        <h3>Image → PDF</h3>
+        <p>Combine one or more images into a single PDF.</p>
+    </a>
+    <a href="/pdf-merge" class="tool-card">
+        <span class="tool-icon">📑</span>
+        <h3>PDF Merge</h3>
+        <p>Combine multiple PDFs into one document.</p>
+    </a>
+    <a href="/pdf-split" class="tool-card">
+        <span class="tool-icon">✂️</span>
+        <h3>PDF Split</h3>
+        <p>Split a PDF into individual single-page files.</p>
+    </a>
+    <a href="/watermark" class="tool-card">
+        <span class="tool-icon">💧</span>
+        <h3>Watermark</h3>
+        <p>Add a text or image watermark to any photo.</p>
+    </a>
+</section>
+{% endblock %}

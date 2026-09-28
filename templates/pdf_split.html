@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}PDF Split — ToolBox{% endblock %}
+
+{% block content %}
+<div class="tool-page">
+    <a href="/" class="back-link">← All Tools</a>
+    <h1 class="tool-title">✂️ PDF Split</h1>
+    <p class="tool-desc">Splits your PDF into individual single-page files, delivered as a ZIP.</p>
+
+    <div class="tool-layout">
+        <form id="pdf-split-form" class="tool-form">
+            <label>PDF File</label>
+            <input type="file" name="file" accept="application/pdf" required>
+
+            <button type="submit" class="btn-primary">Split PDF</button>
+            <p class="status-line" id="status-line"></p>
+        </form>
+
+        <div class="result-panel">
+            <div class="result-empty" id="result-empty">Your ZIP of split pages will download automatically when ready.</div>
+            <a id="download-link" class="btn-secondary" style="display:none;" download="split_pages.zip">Download ZIP</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+initFileResultForm({
+    formId: "pdf-split-form",
+    endpoint: "/api/pdf/split",
+    downloadName: "split_pages.zip",
+});
+</script>
+{% endblock %}

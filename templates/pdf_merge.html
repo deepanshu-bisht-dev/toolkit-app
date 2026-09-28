@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}PDF Merge — ToolBox{% endblock %}
+
+{% block content %}
+<div class="tool-page">
+    <a href="/" class="back-link">← All Tools</a>
+    <h1 class="tool-title">📑 PDF Merge</h1>
+    <p class="tool-desc">Combine two or more PDFs into a single document, in the order you select them.</p>
+
+    <div class="tool-layout">
+        <form id="pdf-merge-form" class="tool-form">
+            <label>PDF Files (select multiple, at least 2)</label>
+            <input type="file" name="files" accept="application/pdf" multiple required>
+
+            <button type="submit" class="btn-primary">Merge PDFs</button>
+            <p class="status-line" id="status-line"></p>
+        </form>
+
+        <div class="result-panel">
+            <div class="result-empty" id="result-empty">Your merged PDF will download automatically when ready.</div>
+            <a id="download-link" class="btn-secondary" style="display:none;" download="merged.pdf">Download PDF</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+initFileResultForm({
+    formId: "pdf-merge-form",
+    endpoint: "/api/pdf/merge",
+    downloadName: "merged.pdf",
+});
+</script>
+{% endblock %}

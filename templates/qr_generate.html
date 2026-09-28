@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}QR Generator — ToolBox{% endblock %}
+
+{% block content %}
+<div class="tool-page">
+    <a href="/" class="back-link">← All Tools</a>
+    <h1 class="tool-title">🔗 QR Code Generator</h1>
+    <p class="tool-desc">Create a custom QR code from any text or link — with your own colors and an optional logo in the center.</p>
+
+    <div class="tool-layout">
+        <form id="qr-generate-form" class="tool-form">
+            <label>Text or URL</label>
+            <textarea name="data" placeholder="https://example.com or any text" required></textarea>
+
+            <div class="field-row">
+                <div class="field">
+                    <label>Foreground Color</label>
+                    <input type="color" name="fill_color" value="#000000">
+                </div>
+                <div class="field">
+                    <label>Background Color</label>
+                    <input type="color" name="back_color" value="#ffffff">
+                </div>
+            </div>
+
+            <label>Size (box size)</label>
+            <input type="range" name="box_size" min="4" max="20" value="10">
+
+            <label>Logo (optional)</label>
+            <input type="file" name="logo" accept="image/*">
+
+            <button type="submit" class="btn-primary">Generate QR Code</button>
+            <p class="status-line" id="status-line"></p>
+        </form>
+
+        <div class="result-panel">
+            <div class="result-empty" id="result-empty">Your QR code will appear here.</div>
+            <img id="result-image" class="result-image" style="display:none;">
+            <a id="download-link" class="btn-secondary" style="display:none;" download="qrcode.png">Download</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+initImageResultForm({
+    formId: "qr-generate-form",
+    endpoint: "/api/qr/generate",
+    downloadName: "qrcode.png",
+});
+</script>
+{% endblock %}

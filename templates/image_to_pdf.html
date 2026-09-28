@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Image to PDF — ToolBox{% endblock %}
+
+{% block content %}
+<div class="tool-page">
+    <a href="/" class="back-link">← All Tools</a>
+    <h1 class="tool-title">🖼️ Image → PDF</h1>
+    <p class="tool-desc">Combine one or more images into a single PDF document, in the order you select them.</p>
+
+    <div class="tool-layout">
+        <form id="image-to-pdf-form" class="tool-form">
+            <label>Images (select multiple)</label>
+            <input type="file" name="files" accept="image/*" multiple required>
+
+            <button type="submit" class="btn-primary">Create PDF</button>
+            <p class="status-line" id="status-line"></p>
+        </form>
+
+        <div class="result-panel">
+            <div class="result-empty" id="result-empty">Your PDF will download automatically when ready.</div>
+            <a id="download-link" class="btn-secondary" style="display:none;" download="combined.pdf">Download PDF</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+initFileResultForm({
+    formId: "image-to-pdf-form",
+    endpoint: "/api/pdf/from-images",
+    downloadName: "combined.pdf",
+});
+</script>
+{% endblock %}

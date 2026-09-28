@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Image Compressor — ToolBox{% endblock %}
+
+{% block content %}
+<div class="tool-page">
+    <a href="/" class="back-link">← All Tools</a>
+    <h1 class="tool-title">🗜️ Image Compressor & Resizer</h1>
+    <p class="tool-desc">Shrink a photo's file size, and optionally resize its dimensions at the same time.</p>
+
+    <div class="tool-layout">
+        <form id="image-compress-form" class="tool-form">
+            <label>Image</label>
+            <input type="file" name="file" accept="image/*" required>
+
+            <label>Quality: <span id="quality-value">80</span>%</label>
+            <input type="range" name="quality" min="10" max="100" value="80" oninput="document.getElementById('quality-value').textContent = this.value">
+
+            <div class="field-row">
+                <div class="field">
+                    <label>Max Width (px, optional)</label>
+                    <input type="number" name="max_width" placeholder="e.g. 1280">
+                </div>
+                <div class="field">
+                    <label>Max Height (px, optional)</label>
+                    <input type="number" name="max_height" placeholder="e.g. 720">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Compress Image</button>
+            <p class="status-line" id="status-line"></p>
+        </form>
+
+        <div class="result-panel">
+            <div class="result-empty" id="result-empty">Your compressed image will appear here.</div>
+            <img id="result-image" class="result-image" style="display:none;">
+            <a id="download-link" class="btn-secondary" style="display:none;" download="compressed.jpg">Download</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+initImageResultForm({
+    formId: "image-compress-form",
+    endpoint: "/api/image/compress",
+    downloadName: "compressed.jpg",
+});
+</script>
+{% endblock %}

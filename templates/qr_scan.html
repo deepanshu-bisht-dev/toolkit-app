@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}QR Scanner — ToolBox{% endblock %}
+
+{% block content %}
+<div class="tool-page">
+    <a href="/" class="back-link">← All Tools</a>
+    <h1 class="tool-title">📷 QR Code Scanner</h1>
+    <p class="tool-desc">Upload an image containing a QR code and get the decoded text or link instantly.</p>
+
+    <div class="tool-layout">
+        <form id="qr-scan-form" class="tool-form">
+            <label>Image with QR Code</label>
+            <input type="file" name="file" accept="image/*" required>
+
+            <button type="submit" class="btn-primary">Scan QR Code</button>
+            <p class="status-line" id="status-line"></p>
+        </form>
+
+        <div class="result-panel">
+            <div class="result-empty" id="result-empty">Decoded results will appear here.</div>
+            <div id="scan-results" class="scan-results" style="display:none;"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+initQrScanForm();
+</script>
+{% endblock %}

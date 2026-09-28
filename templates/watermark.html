@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Watermark — ToolBox{% endblock %}
+
+{% block content %}
+<div class="tool-page">
+    <a href="/" class="back-link">← All Tools</a>
+    <h1 class="tool-title">💧 Add Watermark</h1>
+    <p class="tool-desc">Add a text or image watermark to a photo, with control over position and opacity.</p>
+
+    <div class="tool-layout">
+        <form id="watermark-form" class="tool-form">
+            <label>Image</label>
+            <input type="file" name="file" accept="image/*" required>
+
+            <label>Watermark Type</label>
+            <select name="watermark_type" id="watermark-type-select">
+                <option value="text">Text</option>
+                <option value="image">Image / Logo</option>
+            </select>
+
+            <div id="text-watermark-field">
+                <label>Watermark Text</label>
+                <input type="text" name="text" placeholder="e.g. © Deepanshu Bisht">
+            </div>
+
+            <div id="image-watermark-field" style="display:none;">
+                <label>Watermark Image / Logo</label>
+                <input type="file" name="watermark_image" accept="image/*">
+            </div>
+
+            <label>Position</label>
+            <select name="position">
+                <option value="bottom-right">Bottom Right</option>
+                <option value="bottom-left">Bottom Left</option>
+                <option value="top-right">Top Right</option>
+                <option value="top-left">Top Left</option>
+                <option value="center">Center</option>
+            </select>
+
+            <label>Opacity: <span id="opacity-value">128</span></label>
+            <input type="range" name="opacity" min="20" max="255" value="128" oninput="document.getElementById('opacity-value').textContent = this.value">
+
+            <button type="submit" class="btn-primary">Apply Watermark</button>
+            <p class="status-line" id="status-line"></p>
+        </form>
+
+        <div class="result-panel">
+            <div class="result-empty" id="result-empty">Your watermarked image will appear here.</div>
+            <img id="result-image" class="result-image" style="display:none;">
+            <a id="download-link" class="btn-secondary" style="display:none;" download="watermarked.png">Download</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById("watermark-type-select").addEventListener("change", (e) => {
+    const isText = e.target.value === "text";
+    document.getElementById("text-watermark-field").style.display = isText ? "block" : "none";
+    document.getElementById("image-watermark-field").style.display = isText ? "none" : "block";
+});
+
+initImageResultForm({
+    formId: "watermark-form",
+    endpoint: "/api/image/watermark",
+    downloadName: "watermarked.png",
+});
+</script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Image Converter — ToolBox{% endblock %}
+
+{% block content %}
+<div class="tool-page">
+    <a href="/" class="back-link">← All Tools</a>
+    <h1 class="tool-title">🔄 Image Format Converter</h1>
+    <p class="tool-desc">Convert an image between PNG, JPG, WEBP, and BMP formats.</p>
+
+    <div class="tool-layout">
+        <form id="image-convert-form" class="tool-form">
+            <label>Image</label>
+            <input type="file" name="file" accept="image/*" required>
+
+            <label>Convert To</label>
+            <select name="target_format" id="target-format-select">
+                <option value="png">PNG</option>
+                <option value="jpeg">JPG</option>
+                <option value="webp">WEBP</option>
+                <option value="bmp">BMP</option>
+            </select>
+
+            <button type="submit" class="btn-primary">Convert Image</button>
+            <p class="status-line" id="status-line"></p>
+        </form>
+
+        <div class="result-panel">
+            <div class="result-empty" id="result-empty">Your converted image will appear here.</div>
+            <img id="result-image" class="result-image" style="display:none;">
+            <a id="download-link" class="btn-secondary" style="display:none;" download="converted.png">Download</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+initImageResultForm({
+    formId: "image-convert-form",
+    endpoint: "/api/image/convert",
+    downloadName: "converted",
+    dynamicExtensionFieldId: "target-format-select",
+});
+</script>
+{% endblock %}
