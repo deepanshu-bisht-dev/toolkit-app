@@ -1,5 +1,5 @@
 """
-ToolBox - Multipurpose utility toolkit.
+ToolBox - Multipurpose utility toolkit..
 QR generation/scanning, image compression/conversion/watermarking,
 and PDF tools - all built with FastAPI.
 """
